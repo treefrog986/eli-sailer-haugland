@@ -7,7 +7,7 @@ export default function Hello() {
             method:"POST",
             body: null
         }).then(t=> t.json())
-        setName(res.name)
+        setName(res.message)
     }
     return (<div>
         {name}

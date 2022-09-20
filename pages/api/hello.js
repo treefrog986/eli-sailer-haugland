@@ -1,5 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { createTransport } from 'nodemailer'
+
+require('dotenv').config()
+
 export default function handler(req, res) {
   try{
 
@@ -11,7 +14,7 @@ export default function handler(req, res) {
       requireTLS: true,
         auth:{
             user: 'eli092011@gmail.com',
-            pass: 'qzuibetdwqbpxhsd'
+            pass: process.env.password
         }
     })
     
@@ -29,9 +32,9 @@ export default function handler(req, res) {
             console.log(info.response)
         }
     })
+    res.status(200).json({messge:'Email sent successfully'})
   }
   catch{
 
   }
-  res.status(200).json({ name: 'John Doe' })
 }
